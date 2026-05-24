@@ -2,42 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Strongest Battlegrounds Remake</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Strongest Battlegrounds 3D Mobile Web Remake</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <canvas id="gameCanvas"></canvas>
 
-    <div id="tsb-combat-deck">
-        <div class="hud-header">
-            <select id="char-selector">
-                <option value="Saitama">Saitama (The Strongest Hero)</option>
-                <option value="Garou">Garou (Hero Hunter)</option>
-                <option value="Genos">Genos (Demon Cyborg)</option>
-            </select>
-            <div id="char-display">SAITAMA</div>
+    <div id="mobile-joystick-container">
+        <div id="mobile-joystick-base">
+            <div id="mobile-joystick-stick"></div>
+        </div>
+    </div>
+
+    <div id="tsb-global-hud">
+        
+        <div id="hud-status-panel">
+            <div class="character-identity-row">
+                <select id="char-selector">
+                    <option value="Saitama">Saitama (The Strongest Hero)</option>
+                    <option value="Garou">Garou (Hero Hunter)</option>
+                    <option value="Genos">Genos (Demon Cyborg)</option>
+                </select>
+                <div id="char-display">SAITAMA</div>
+            </div>
+            
+            <div class="bar-container health-wrap">
+                <div id="health-fill-bar" style="width: 100%;"></div>
+                <span class="bar-label">HEALTH</span>
+            </div>
+
+            <div class="bar-container awakening-wrap">
+                <div id="awakening-fill-bar" style="width: 0%;"></div>
+                <span class="bar-label">AWAKENING METER <span id="awaken-percentage">0%</span></span>
+            </div>
         </div>
 
-        <div class="skills-row">
-            <div class="skill-slot-wrapper">
-                <div class="key-indicator">1</div>
-                <button id="skill-1" class="skill-btn">Skill 1</button>
+        <div id="tsb-combat-deck">
+            <div class="skills-row">
+                <div class="skill-slot-wrapper">
+                    <div class="key-indicator">1</div>
+                    <button id="skill-1" class="skill-btn">Skill 1</button>
+                </div>
+                <div class="skill-slot-wrapper">
+                    <div class="key-indicator">2</div>
+                    <button id="skill-2" class="skill-btn">Skill 2</button>
+                </div>
+                <div class="skill-slot-wrapper">
+                    <div class="key-indicator">3</div>
+                    <button id="skill-3" class="skill-btn">Skill 3</button>
+                </div>
+                <div class="skill-slot-wrapper">
+                    <div class="key-indicator">4</div>
+                    <button id="skill-4" class="skill-btn">Skill 4</button>
+                </div>
+                <button id="btn-awaken" class="awakening-trigger-btn locked">G - AWAKEN</button>
             </div>
-            <div class="skill-slot-wrapper">
-                <div class="key-indicator">2</div>
-                <button id="skill-2" class="skill-btn">Skill 2</button>
-            </div>
-            <div class="skill-slot-wrapper">
-                <div class="key-indicator">3</div>
-                <button id="skill-3" class="skill-btn">Skill 3</button>
-            </div>
-            <div class="skill-slot-wrapper">
-                <div class="key-indicator">4</div>
-                <button id="skill-4" class="skill-btn">Skill 4</button>
-            </div>
-            <button id="btn-awaken" class="awakening-trigger-btn">G - AWAKEN</button>
         </div>
     </div>
 
