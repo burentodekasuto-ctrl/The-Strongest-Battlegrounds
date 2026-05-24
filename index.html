@@ -1,49 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>3D Strongest Battlegrounds Engine</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Include Three.js Core Engine -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-</head>
-<body>
-
-    <div id="canvas-container"></div>
-
-    <!-- Top Development Control Panel -->
-    <div id="top-menu">
-        <select id="char-selector" class="menu-btn touch-interactive">
-            <option value="saitama">Saitama (Hero)</option>
-            <option value="garou">Garou (Fiend)</option>
-            <option value="genos">Genos (Cyborg)</option>
-        </select>
-        <button class="menu-btn touch-interactive" onclick="spawnDummy()">Spawn Dummy</button>
-        <button class="menu-btn touch-interactive" onclick="toggleConfig()">Configure</button>
+<div id="tsb-combat-deck">
+    <div class="skill-slot-wrapper">
+        <div class="key-indicator">1</div>
+        <button id="skill-1" class="skill-btn">Normal Punch</button>
     </div>
-
-    <!-- Dynamic HUD System -->
-    <div id="hud-container">
-        <div id="char-display">SAITAMA</div>
-        <div class="subtitle">PC: WASD + Q + CLICK | Mobile: Virtual UI</div>
+    <div class="skill-slot-wrapper">
+        <div class="key-indicator">2</div>
+        <button id="skill-2" class="skill-btn">Consecutive Punches</button>
     </div>
-
-    <div id="combo-counter">1 HIT</div>
-
-    <!-- Mobile Virtual Layer Layer -->
-    <div id="mobile-touch-layer">
-        <div id="joystick-zone" class="touch-interactive">
-            <div id="joystick-stick"></div>
-        </div>
-        <div id="action-buttons-zone">
-            <div id="btn-dash" class="action-circle-btn touch-interactive">DASH</div>
-            <div id="btn-attack" class="action-circle-btn touch-interactive">M1</div>
-        </div>
+    <div class="skill-slot-wrapper">
+        <div class="key-indicator">3</div>
+        <button id="skill-3" class="skill-btn">Shove</button>
     </div>
-
-    <!-- Link Game Script Manifests -->
-    <script src="config.js"></script>
-    <script src="game.js"></script>
-</body>
-</html>
+    <div class="skill-slot-wrapper">
+        <div class="key-indicator">4</div>
+        <button id="skill-4" class="skill-btn">Uppercut</button>
+    </div>
+    <button id="btn-awaken" class="awakening-trigger-btn" onclick="triggerAwakening()">G - AWAKEN</button>
+</div>
