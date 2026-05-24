@@ -2,108 +2,183 @@
 body {
     margin: 0;
     overflow: hidden;
-    background-color: #0b0c10;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #060709;
+    font-family: 'Segoe UI', Arial, sans-serif;
     user-select: none;
+    touch-action: none;
 }
 #gameCanvas {
     display: block;
     width: 100vw;
     height: 100vh;
 }
-#tsb-combat-deck {
+
+/* Joystick Layouts */
+#mobile-joystick-container {
     position: absolute;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(20, 22, 29, 0.95);
-    border: 2px solid #3a3f58;
-    border-radius: 10px;
-    padding: 10px 20px;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 500;
+}
+#mobile-joystick-base {
+    position: absolute;
+    width: 100px; height: 100px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    display: none;
+    pointer-events: none;
+}
+#mobile-joystick-stick {
+    position: absolute;
+    top: 25px; left: 25px;
+    width: 50px; height: 50px;
+    background: rgba(217, 4, 41, 0.8);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* Master Overlay HUD Configuration */
+#tsb-global-hud {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    justify-content: space-between;
+    padding: 16px;
+    box-sizing: border-box;
     z-index: 999;
 }
-.hud-header {
+
+/* Status Configuration Display Deck Box */
+#hud-status-panel {
+    pointer-events: auto;
+    background: rgba(12, 14, 20, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 12px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+.character-identity-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    border-bottom: 1px solid #2d3142;
-    padding-bottom: 6px;
-    margin-bottom: 4px;
-    gap: 20px;
 }
 #char-display {
     color: #fff;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
+    font-weight: 900;
+    font-size: 13px;
+    letter-spacing: 1px;
 }
 #char-selector {
-    background: #12131a;
-    border: 1px solid #454b6e;
-    color: #edf2f7;
+    background: #090a0f;
+    border: 1px solid #32374a;
+    color: #cdd1e4;
     font-size: 11px;
     font-weight: 700;
-    padding: 4px 8px;
+    padding: 3px 6px;
     border-radius: 4px;
-    outline: none;
-    cursor: pointer;
 }
-#char-selector:hover {
-    border-color: #7209b7;
+
+/* Status Gauge Bar Indicators */
+.bar-container {
+    position: relative;
+    height: 16px;
+    background: #14161f;
+    border: 1px solid #282b3d;
+    border-radius: 4px;
+    overflow: hidden;
+}
+#health-fill-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #cc0033, #ff2a5f);
+}
+#awakening-fill-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #6a0 dad, #00bfff);
+}
+.bar-label {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 8.5px;
+    font-weight: 900;
+    text-shadow: 1px 1px 2px #000;
+}
+
+/* TSB Skill Controller Deck Box layout profiles */
+#tsb-combat-deck {
+    pointer-events: auto;
+    align-self: center;
+    background: rgba(10, 11, 16, 0.92);
+    backdrop-filter: blur(8px);
+    border: 2px solid #222530;
+    border-radius: 10px;
+    padding: 8px 14px;
 }
 .skills-row {
     display: flex;
-    gap: 14px;
+    gap: 10px;
 }
 .skill-slot-wrapper {
     position: relative;
 }
 .key-indicator {
     position: absolute;
-    top: -6px;
-    left: -5px;
+    top: -5px; left: -5px;
     background: #ef233c;
     color: #fff;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 900;
-    padding: 1px 5px;
+    padding: 1px 4px;
     border-radius: 3px;
-    z-index: 10;
 }
 .skill-btn {
-    width: 145px;
-    height: 50px;
-    background: #171923;
-    border: 1px solid #2d3142;
-    color: #edf2f7;
-    font-weight: 700;
-    font-size: 12px;
+    width: 120px; height: 46px;
+    background: #12131a;
+    border: 1px solid #242736;
+    color: #dfdfdf;
+    font-weight: 800;
+    font-size: 11px;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.15s ease;
 }
 .skill-btn:hover {
-    background: #232738;
     border-color: #ffcc00;
 }
-.awakened-slot {
-    background: #3a0f12 !important;
-    border-color: #ef233c !important;
-    color: #ffb3b3 !important;
-}
 .awakening-trigger-btn {
-    height: 50px;
-    background: linear-gradient(135deg, #7209b7 0%, #4cc9f0 100%);
-    border: none;
-    color: #fff;
-    font-weight: 900;
-    padding: 0 15px;
-    border-radius: 5px;
+    height: 46px;
+    background: linear-gradient(135deg, #7209b7 0%, #ff0055 100%);
+    border: none; color: #fff;
+    font-weight: 900; font-size: 11px;
+    padding: 0 14px; border-radius: 5px;
     cursor: pointer;
+}
+.awakening-trigger-btn.locked {
+    background: #1e202a !important;
+    color: #4a4d61;
+    cursor: not-allowed;
+    border: 1px dashed #2d3042;
+}
+
+/* Target Mobile Breakpoint Overrides */
+@media (max-width: 768px) {
+    #hud-status-panel { width: 150px; padding: 6px; gap: 4px; }
+    #char-selector { font-size: 8px; }
+    #char-display { display: none; }
+    .bar-container { height: 11px; }
+    .bar-label { font-size: 7px; }
+
+    .skill-btn { width: 72px; height: 40px; font-size: 8px; }
+    .awakening-trigger-btn { height: 40px; font-size: 8px; padding: 0 4px; }
+    .key-indicator { display: none; }
 }
