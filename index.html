@@ -1,19 +1,47 @@
-<div id="tsb-combat-deck">
-    <div class="skill-slot-wrapper">
-        <div class="key-indicator">1</div>
-        <button id="skill-1" class="skill-btn">Normal Punch</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Strongest Battlegrounds Remake</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <div id="tsb-combat-deck">
+        <div class="hud-header">
+            <select id="char-selector">
+                <option value="Saitama">Saitama (The Strongest Hero)</option>
+                <option value="Garou">Garou (Hero Hunter)</option>
+                <option value="Genos">Genos (Demon Cyborg)</option>
+            </select>
+            <div id="char-display">SAITAMA</div>
+        </div>
+
+        <div class="skills-row">
+            <div class="skill-slot-wrapper">
+                <div class="key-indicator">1</div>
+                <button id="skill-1" class="skill-btn">Skill 1</button>
+            </div>
+            <div class="skill-slot-wrapper">
+                <div class="key-indicator">2</div>
+                <button id="skill-2" class="skill-btn">Skill 2</button>
+            </div>
+            <div class="skill-slot-wrapper">
+                <div class="key-indicator">3</div>
+                <button id="skill-3" class="skill-btn">Skill 3</button>
+            </div>
+            <div class="skill-slot-wrapper">
+                <div class="key-indicator">4</div>
+                <button id="skill-4" class="skill-btn">Skill 4</button>
+            </div>
+            <button id="btn-awaken" class="awakening-trigger-btn">G - AWAKEN</button>
+        </div>
     </div>
-    <div class="skill-slot-wrapper">
-        <div class="key-indicator">2</div>
-        <button id="skill-2" class="skill-btn">Consecutive Punches</button>
-    </div>
-    <div class="skill-slot-wrapper">
-        <div class="key-indicator">3</div>
-        <button id="skill-3" class="skill-btn">Shove</button>
-    </div>
-    <div class="skill-slot-wrapper">
-        <div class="key-indicator">4</div>
-        <button id="skill-4" class="skill-btn">Uppercut</button>
-    </div>
-    <button id="btn-awaken" class="awakening-trigger-btn" onclick="triggerAwakening()">G - AWAKEN</button>
-</div>
+
+    <script src="config.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
