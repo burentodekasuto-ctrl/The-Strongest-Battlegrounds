@@ -1,20 +1,15 @@
 name: Deploy Battlegrounds Workspace to Pages
 
 on:
-  # Triggers the automation workflow every time you save or change code on your main branch
   push:
     branches: ["main"]
-
-  # Allows you to manually click a run button inside your GitHub Actions tab
   workflow_dispatch:
 
-# Sets up specific permissions required to securely upload web assets to GitHub servers
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Prevent overlapping deployments from running concurrently
 concurrency:
   group: "pages"
   cancel-in-progress: true
@@ -25,17 +20,19 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    # --- FIXED: Forces GitHub to utilize Node 24 securely across actions ---
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
     steps:
       - name: Checkout Workspace Code Blueprint
         uses: actions/checkout@v4
 
       - name: Setup Secure Page Modules
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       - name: Bundle Web Assets Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          # Points directly to your root repository workspace directory hosting index.html
           path: '.'
 
       - name: Execute Live Deployment
